@@ -83,7 +83,7 @@ void Widget::screenStart()
             cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4";
             break;
         case 1:
-            cmd_a << "-i" << "/dev/video0 " << tempName + ".mp4";
+            cmd_a << "-i" << "/dev/video0" << tempName + ".mp4";
             break;
         default:
             cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4";
