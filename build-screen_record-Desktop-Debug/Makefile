@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = screen_record1.0.0
-DISTDIR = /home/tintin/Workspaces/qt_screen_record/build-screen_record-Desktop-Debug/.tmp/screen_record1.0.0
+DISTDIR = /home/tintin/Workspaces/QtCreator/screen_record/build-screen_record-Desktop-Debug/.tmp/screen_record1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Multimedia.so /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5Core.so -lGL -lpthread   
@@ -57,8 +57,7 @@ SOURCES       = ../screen_record/main.cpp \
 OBJECTS       = main.o \
 		widget.o \
 		moc_widget.o
-DIST          = ../.astylerc \
-		/usr/lib/qt/mkspecs/features/spec_pre.prf \
+DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
 		/usr/lib/qt/mkspecs/common/sanitize.conf \
@@ -145,6 +144,9 @@ DIST          = ../.astylerc \
 		/usr/lib/qt/mkspecs/modules/qt_lib_designer_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkcore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkgui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkwidget.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_egl_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -385,6 +387,9 @@ Makefile: ../screen_record/screen_record.pro /usr/lib/qt/mkspecs/linux-g++/qmake
 		/usr/lib/qt/mkspecs/modules/qt_lib_designer_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_designercomponents_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_devicediscovery_support_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkcore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkgui.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_dtkwidget.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_edid_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_egl_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri \
@@ -614,6 +619,9 @@ Makefile: ../screen_record/screen_record.pro /usr/lib/qt/mkspecs/linux-g++/qmake
 /usr/lib/qt/mkspecs/modules/qt_lib_designer_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_designercomponents_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_devicediscovery_support_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_dtkcore.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_dtkgui.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_dtkwidget.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_edid_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_egl_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri:
@@ -809,7 +817,7 @@ compiler_moc_header_clean:
 moc_widget.cpp: ../screen_record/widget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/tintin/Workspaces/qt_screen_record/build-screen_record-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/tintin/Workspaces/qt_screen_record/screen_record -I/usr/include/qt -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.1.0 -I/usr/include/c++/10.1.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.1.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.1.0/include-fixed -I/usr/include ../screen_record/widget.h -o moc_widget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/tintin/Workspaces/QtCreator/screen_record/build-screen_record-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/tintin/Workspaces/QtCreator/screen_record/screen_record -I/usr/include/qt -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/10.2.0 -I/usr/include/c++/10.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/10.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed -I/usr/include ../screen_record/widget.h -o moc_widget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

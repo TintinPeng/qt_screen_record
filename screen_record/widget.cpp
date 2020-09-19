@@ -3,6 +3,8 @@
 #include <QApplication>
 #include <QProcess>
 #include <QFile>
+#include <QDebug>
+#include <QDir>
 
 Widget::Widget(QWidget *parent) : QWidget(parent)
 {
@@ -31,6 +33,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
     button_4.setGeometry(0, 150, 175, 50);
     button_4.setParent(this);
 
+
     comboBox_1 = new QComboBox(this);
     comboBox_1->setGeometry(0, 200, 175, 50);
     comboBox_1->setParent(this);
@@ -49,15 +52,9 @@ Widget::Widget(QWidget *parent) : QWidget(parent)
 void Widget::comboBox_1_event(int index)
 {
     switch (index) {
-        case 0:
-            cmd_1 = 0;
-            break;
-        case 1:
-            cmd_1 = 1;
-            break;
-        default:
-            cmd_1 = 0;
-            break;
+    case 0: cmd_1 = 0; break;
+    case 1: cmd_1 = 1; break;
+    default: cmd_1 = 0; break;
     }
 }
 
@@ -79,15 +76,9 @@ void Widget::screenStart()
     label_1->setText("录制中");
     QStringList cmd_a, cmd_b;
     switch (cmd_1) {
-        case 0:
-            cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4";
-            break;
-        case 1:
-            cmd_a << "-i" << "/dev/video0" << tempName + ".mp4";
-            break;
-        default:
-            cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4";
-            break;
+    case 0: cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4"; break;
+    case 1: cmd_a << "-i" << "/dev/video0" << tempName + ".mp4"; break;
+    default: cmd_a << "-f" << "x11grab" << "-s" << screenResolution << "-i" << ":0.0" << tempName + ".mp4"; break;
     }
     cmd_b << "-f" << "alsa" << "-i" << "default" << tempName + ".mp3";
     process_1 = new QProcess();
@@ -108,11 +99,13 @@ void Widget::screenStop()
     process_1->waitForFinished();
     process_2->write("q");
     process_2->waitForFinished();
+
     process_4 = new QProcess();
     process_4->startDetached(FFmpeg, cmd_1);
     process_4->waitForFinished();
-    while(!currentVideo.exists()) {
-    }
+
+    while (!currentVideo.exists()) { }
+
     process_4->startDetached(rm, cmd_2);
     label_1->setText("上一个录制已完成\n新录制尚未开始");
     button_1.setEnabled(true);
@@ -129,7 +122,12 @@ void Widget::screenShot()
 
 void Widget::openDir()
 {
-    QDesktopServices::openUrl(QUrl("/home/tintin/Workspaces/qt_screen_record/captures/", QUrl::TolerantMode));
+    QString currentPath = QDir::currentPath();
+    QString url;
+//    QString url = "/home/tintin/Workspaces/QtCreator/screen_record/captures/";
+//    qDebug() << currentPath + "/" + savedDir << Qt::endl;
+    url = currentPath + "/" + savedDir;
+    QDesktopServices::openUrl(QUrl(url, QUrl::TolerantMode));
 }
 
 Widget::~Widget() {}
